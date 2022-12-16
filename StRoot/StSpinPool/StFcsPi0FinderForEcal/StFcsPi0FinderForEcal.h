@@ -29,7 +29,7 @@ class StFcsPi0FinderForEcal : public StMaker {
    Int_t Init();
    Int_t Make();
    Int_t Finish();
-   void st(Int_t run2) { filename = Form("StFcsPi0invariantmass%i.root", run2); };
+   void setOutFileSuffix(const char* run2) { filename = "StFcsPi0invariantmass"+std::string(run2)+".root"; }
 
   private:
    StFcsDb* mFcsDb = 0;

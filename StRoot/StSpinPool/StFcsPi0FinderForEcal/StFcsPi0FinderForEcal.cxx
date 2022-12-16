@@ -240,7 +240,7 @@ Int_t StFcsPi0FinderForEcal::Finish() {
 
 //----------------------
 Int_t StFcsPi0FinderForEcal::Make() {
-   cout << "Start using StFcsPi0FinderForECal" << endl;
+  //cout << "Start using StFcsPi0FinderForECal" << endl;
    StEvent* event = (StEvent*)GetInputDS("StEvent");
    if (!event) {
       LOG_ERROR << "StFcsPi0FinderForEcal::Make did not find StEvent" << endm;
@@ -255,7 +255,7 @@ Int_t StFcsPi0FinderForEcal::Make() {
    h1_num_entries->Fill(1);
    if (mNAccepted < mMaxEvents) {
       mNEvents++;
-      cout << "current event:" << mNEvents << endl;
+      //cout << "current event:" << mNEvents << endl;
       if (mFilter == 1 && mFcsColl->numberOfHits(0) + mFcsColl->numberOfHits(1) + mFcsColl->numberOfHits(2) + mFcsColl->numberOfHits(3) == 0) return kStOK;
 
       //TOF mult cut                                                                                                     
@@ -455,8 +455,8 @@ Int_t StFcsPi0FinderForEcal::Make() {
 		  	StThreeVectorD xyzj_Vtpc = xyzj;
 		  	//xyzj_Vtpc.setZ(xyzjz-zTPC);
 			StLorentzVectorD pj_Vtpc = mFcsDb->getLorentzVector((xyzj_Vtpc), cluj_energy, zTPC);
-			cout<<"Vertex z for original cluster:"<<pj.z()<<endl;
-			cout<<"Vertex z for TPC vertex cluster:"<<pj_Vtpc.z()<<endl;
+			//cout<<"Vertex z for original cluster:"<<pj.z()<<endl;
+			//cout<<"Vertex z for TPC vertex cluster:"<<pj_Vtpc.z()<<endl;
 		  	StThreeVectorD xyz_Vtpc = xyz;
 			//double xyzz = xyz_Vtpc.z();
 		  	//xyz_Vtpc.setZ(xyzz-zTPC);

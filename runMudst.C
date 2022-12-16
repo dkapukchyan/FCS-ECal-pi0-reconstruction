@@ -66,7 +66,7 @@ void runMudst(char* file="st_cosmic_adc_22326042_raw_0000005.MuDst.root",
 
     gSystem->Load("StFcsPi0FinderForEcal");
     StFcsPi0FinderForEcal* fcsPi0Finder = new StFcsPi0FinderForEcal();
-    fcsPi0Finder->st(1);
+    fcsPi0Finder->setOutFileSuffix("1");
 
     chain->Init();
     chain->EventLoop(start,stop);
