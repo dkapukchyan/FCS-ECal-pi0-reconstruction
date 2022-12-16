@@ -53,7 +53,7 @@ void runMudst(char* file="st_cosmic_adc_22326042_raw_0000005.MuDst.root",
     StFcsRawHitMaker* hit = new StFcsRawHitMaker();  
     hit->setReadMuDst(readMuDst);
     StFcsWaveformFitMaker *wff= new StFcsWaveformFitMaker();
-    wff->setEnergySelect(10);
+    wff->setEnergySelect(10,1,1);
     wff->SetDebug(debug);
     StFcsClusterMaker *clu= new StFcsClusterMaker();
     StFcsPointMaker *poi= new StFcsPointMaker();

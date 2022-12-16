@@ -3,12 +3,11 @@
 echo "Please write down the run number"
 read run
 
-rm ./$run/StFcsPi0invariantmassAll*.root
-
 for i in {0..9}
 do
-	eval "hadd ./$run/StFcsPi0invariantmassAll$i.root ./$run/StFcsPi0invariantmass*$i.root"
-
+    Target="./$run/StFcsPi0invariantmassAll$i.root"
+    Source="./$run/StFcsPi0invariantmass${run}_*$i.root"
+    eval "hadd -f $Target $Source"
 done
 
-eval "hadd ./$run/StFcsPi0invariantmassAll.root ./$run/StFcsPi0invariantmassAll*.root"
+eval "hadd -f ./$run/StFcsPi0invariantmassAll.root ./$run/StFcsPi0invariantmassAll?.root"
