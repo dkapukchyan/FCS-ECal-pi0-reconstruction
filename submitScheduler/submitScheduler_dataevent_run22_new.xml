@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Job parameters -->
+<job maxFilesPerProcess="1" filesPerHour="2">
+  <!-- <stdout discard="true"/> -->
+  <!-- Task list -->
+  <command>
+    stardev
+    root4star -b -q runMudst.C\(\"$INPUTFILE0\",-1,1000000\)
+    mv StFcs*.root StFcsPi0invariantmass&runnumber;_$JOBINDEX.root 
+  </command>
+
+  <!-- Necessary files -->
+  <SandBox installer="ZIP">
+    <Package>
+	    <File>file:&folder;/runMudst.C</File>
+	    <File>file:&folder;/.sl73_gcc485</File>
+	    <File>file:&folder;/fcsgaincorr.txt</File>
+    </Package>
+  </SandBox>
+
+  <!-- Get input files from get_file_lis.pl -->
+  <input URL="filelist:&datafolder;/&runnumber;eventroot.list" />
+
+  <!-- Run log & error messages -->
+  <stdout discard="true" />
+  <stderr URL="file:&datafolder;/log/&runnumber;_$JOBINDEX.err" />
+  <output fromScratch="StFcs*.root" toURL="file:&datafolder;/&runnumber;/"/>
+
+  <Generator>
+    <Location>&datafolder;</Location>
+    <ScriptLocation>&datafolder;</ScriptLocation>
+    <ListLocation>&datafolder;</ListLocation>
+  </Generator>
+
+</job>
